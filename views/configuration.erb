@@ -1,0 +1,40 @@
+    <main class="max-w-5xl mx-auto px-6 pt-32 pb-32">
+        <!-- Config DSL -->
+        <section id="config" class="glass p-12 rounded-[3rem] border border-white/5 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-600/20 blur-[80px]"></div>
+            <div class="relative z-10">
+                <h2 class="text-3xl font-black mb-8">Konfigurasi Profesional (DSL)</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <p class="text-slate-400">EksaServer mendukung file konfigurasi <code class="text-white">config/eksa_server.rb</code> dengan sintaks yang intuitif:</p>
+                        <table class="w-full text-sm">
+                            <tr class="border-b border-white/10">
+                                <td class="py-3 font-mono text-indigo-300">threads min, max</td>
+                                <td class="py-3 text-slate-400">Atur rentang dynamic thread.</td>
+                            </tr>
+                            <tr class="border-b border-white/10">
+                                <td class="py-3 font-mono text-indigo-300">workers count</td>
+                                <td class="py-3 text-slate-400">Aktifkan Cluster Mode.</td>
+                            </tr>
+                            <tr class="border-b border-white/10">
+                                <td class="py-3 font-mono text-indigo-300">bind url</td>
+                                <td class="py-3 text-slate-400">Mendukung TCP atau UNIX socket.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500">Contoh Konfigurasi Produksi</h4>
+                        <pre class="text-xs"><code># config/eksa_server.rb
+threads 10, 50
+workers 4
+bind "tcp://0.0.0.0:80"
+bind "unix:///var/run/app.sock"
+
+on_worker_boot do |id|
+  puts "Worker #{id} lahir kembali..."
+end</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>

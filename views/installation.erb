@@ -1,0 +1,28 @@
+    <main class="max-w-5xl mx-auto px-6 pt-32 pb-32">
+        <!-- Installation -->
+        <section id="install">
+            <h2 class="text-4xl font-black mb-12 text-center">Siap Dalam 3 Langkah</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-3xl border border-white/10 hover:border-indigo-500/30 transition">
+                    <div class="step-num mb-6">1</div>
+                    <h3 class="text-xl font-bold mb-4">Instalasi Gem</h3>
+                    <p class="text-slate-400 mb-6">Tambahkan ke Gemfile Anda atau instal langsung via terminal.</p>
+                    <pre class="text-sm"><code>gem install eksa_server</code></pre>
+                </div>
+                <div class="glass p-8 rounded-3xl border border-white/10 hover:border-indigo-500/30 transition">
+                    <div class="step-num mb-6">2</div>
+                    <h3 class="text-xl font-bold mb-4">Buat config.ru</h3>
+                    <p class="text-slate-400 mb-6">Gunakan aplikasi Rack favorit Anda (Rails, Sinatra, atau EksaFramework).</p>
+                    <pre class="text-sm"><code>run Proc.new { |env| 
+ [200, {}, ["Hello World"]] 
+}</code></pre>
+                </div>
+                <div class="glass p-8 rounded-3xl border border-white/10 hover:border-indigo-500/30 transition">
+                    <div class="step-num mb-6">3</div>
+                    <h3 class="text-xl font-bold mb-4">Jalankan Server</h3>
+                    <p class="text-slate-400 mb-6">Gunakan CLI eksa-server untuk meluncurkan layanan.</p>
+                    <pre class="text-sm"><code>eksa-server</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>

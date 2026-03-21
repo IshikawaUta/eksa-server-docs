@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EksaServer - Dokumentasi Resmi</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Outfit', sans-serif; background: #020617; color: #f8fafc; overflow-x: hidden; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-dark { background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .glow { position: absolute; border-radius: 50%; filter: blur(100px); z-index: -1; }
+        pre { background: rgba(0,0,0,0.5) !important; border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); overflow-x: auto; }
+        code { font-family: 'Fira Code', monospace; color: #cbd5e1; }
+        .nav-link:hover { color: #818cf8; transform: translateY(-1px); }
+        .step-num { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #4f46e5; border-radius: 12px; font-weight: 800; color: white; margin-right: 1rem; }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="selection:bg-indigo-500/30">
+    <!-- Background Glows -->
+    <div class="glow w-[500px] h-[500px] bg-indigo-500/10 -top-48 -left-48"></div>
+    <div class="glow w-[400px] h-[400px] bg-purple-500/10 top-1/2 -right-48"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto glass rounded-2xl px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-indigo-600 rounded-lg"><i data-lucide="server" class="w-5 h-5 text-white"></i></div>
+                <span class="text-xl font-extrabold tracking-tight">Eksa<span class="text-indigo-400">Server</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
+                <a href="/" class="nav-link transition <%= 'text-indigo-400' if @path == '/' %>">Pengenalan</a>
+                <a href="/installation" class="nav-link transition <%= 'text-indigo-400' if @path == '/installation' %>">Instalasi</a>
+                <a href="/configuration" class="nav-link transition <%= 'text-indigo-400' if @path == '/configuration' %>">Konfigurasi</a>
+                <a href="/api" class="nav-link transition <%= 'text-indigo-400' if @path == '/api' %>">Contoh</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/IshikawaUta/eksa-server" class="hidden sm:flex px-5 py-2 glass rounded-xl text-sm font-bold hover:bg-white/5 transition border border-white/10 items-center gap-2">
+                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                </a>
+                <button id="menu-toggle" class="md:hidden p-2 glass rounded-xl text-indigo-400">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#020617]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 text-3xl font-extrabold transition-all duration-500 opacity-0 pointer-events-none -translate-y-10">
+        <button id="menu-close" class="absolute top-10 right-10 p-4 glass rounded-[2rem] text-slate-400 hover:text-white transition">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <a href="/" class="mobile-link hover:text-indigo-400 transition">Pengenalan</a>
+        <a href="/installation" class="mobile-link hover:text-indigo-400 transition">Instalasi</a>
+        <a href="/configuration" class="mobile-link hover:text-indigo-400 transition">Konfigurasi</a>
+        <a href="/api" class="mobile-link hover:text-indigo-400 transition">Contoh</a>
+        <a href="https://github.com/IshikawaUta/eksa-server" class="mt-4 px-8 py-4 bg-indigo-600 rounded-2xl text-lg flex items-center gap-2">
+            <i data-lucide="github" class="w-6 h-6"></i> GitHub
+        </a>
+    </div>
+
+    <main class="fade-in">
+        <%= @content %>
+    </main>
+
+    <footer class="glass-dark border-t border-white/10 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-indigo-600/20 rounded-lg border border-indigo-500/20"><i data-lucide="server" class="w-5 h-5 text-indigo-400"></i></div>
+                <span class="text-lg font-bold">EksaServer</span>
+            </div>
+            <p class="text-slate-500 text-sm italic">by IshikawaUta. Built for performance.</p>
+            <div class="flex gap-6">
+                <a href="https://github.com/IshikawaUta/eksa-server" class="hover:text-indigo-400 transition"><i data-lucide="github" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        const toggleMenu = (show) => {
+            if (show) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-10');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-10');
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                document.body.style.overflow = '';
+            }
+        };
+
+        menuToggle.addEventListener('click', () => toggleMenu(true));
+        menuClose.addEventListener('click', () => toggleMenu(false));
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+    </script>
+</body>
+</html>

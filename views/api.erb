@@ -1,0 +1,48 @@
+    <main class="max-w-5xl mx-auto px-6 pt-32 pb-32">
+        <!-- Examples -->
+        <section id="examples">
+            <h2 class="text-4xl font-black mb-12 text-center text-indigo-300">Contoh Implementasi</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Hello World -->
+                <div class="glass p-8 rounded-3xl border border-white/5 group hover:bg-white/5 transition">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-green-500/20 rounded-2xl text-green-400"><i data-lucide="highlighter" class="w-6 h-6"></i></div>
+                        <h3 class="text-xl font-bold">Simple Rack App</h3>
+                    </div>
+                    <pre class="text-xs"><code># config.ru
+run lambda { |env|
+  [200, {"Content-Type" => "text/html"}, 
+   ["&lt;h1&gt;Halo Dunia!&lt;/h1&gt;"]]
+}</code></pre>
+                </div>
+
+                <!-- API -->
+                <div class="glass p-8 rounded-3xl border border-white/5 group hover:bg-white/5 transition">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-purple-500/20 rounded-2xl text-purple-400"><i data-lucide="database" class="w-6 h-6"></i></div>
+                        <h3 class="text-xl font-bold">JSON API</h3>
+                    </div>
+                    <pre class="text-xs"><code># config.ru
+require 'json'
+run lambda { |env|
+  [200, {"Content-Type" => "application/json"}, 
+   [{status: "ok", data: "Hello"}.to_json]]
+}</code></pre>
+                </div>
+
+                <!-- Static -->
+                <div class="glass p-8 rounded-3xl border border-white/5 group hover:bg-white/5 transition md:col-span-2">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-blue-500/20 rounded-2xl text-blue-400"><i data-lucide="file-code" class="w-6 h-6"></i></div>
+                        <h3 class="text-xl font-bold">Static Site Server</h3>
+                    </div>
+                    <div class="flex flex-col gap-6">
+                        <p class="text-slate-400 text-sm">EksaServer sangat bagus untuk melayani file statis dengan middleware standard Rack. Cukup tentukan folder root dan file index Anda.</p>
+                        <pre class="text-xs w-full"><code># config.ru
+use Rack::Static, urls: [""], root: "public", index: "index.html"
+run lambda { |env| [404, {"Content-Type" => "text/html"}, ["Not Found"]] }</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
