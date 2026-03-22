@@ -1,8 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    eksa-server (1.1.0)
-      logger
+    eksa-server (1.1.1)
+      logger (~> 1.6)
       nio4r (~> 2.0)
       rack (~> 3.0)
       rackup (~> 2.0)
@@ -18,14 +18,14 @@ PLATFORMS
   x86_64-linux-gnu
 
 DEPENDENCIES
-  eksa-server
+  eksa-server (= 1.1.1)
   erb
   logger
   rack
   rackup
 
 CHECKSUMS
-  eksa-server (1.1.0) sha256=4f9b93360d4b5e28107c57c483684b11fbd974b37bd2892ca0f9557e0dd9cf26
+  eksa-server (1.1.1) sha256=bb7889601ae16e332ade1fa8deb3484558df798d125b4f998ae16280b51ada05
   erb (6.0.2) sha256=9fe6264d44f79422c87490a1558479bd0e7dad4dd0e317656e67ea3077b5242b
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   nio4r (2.7.5) sha256=6c90168e48fb5f8e768419c93abb94ba2b892a1d0602cb06eef16d8b7df1dca1

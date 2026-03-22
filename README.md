@@ -34,7 +34,7 @@ This repository contains the official documentation for **EksaServer**, a high-p
 To launch the documentation site locally using `eksa-server`:
 
 ```bash
-eksa-server config.ru
+bundle exec eksa-server
 ```
 
 The site will be available at `http://localhost:3000`.
